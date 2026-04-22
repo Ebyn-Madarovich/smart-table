@@ -22,8 +22,13 @@ export function initFiltering(elements, indexes) {
 
     return (data, state, action) => {
         // @todo: #4.2 — обработать очистку поля
+        const filterState = {
+            ...state,
+            totalFrom: state.totalFrom ? parseFloat(state.totalFrom) : undefined,
+            totalTo: state.totalTo ? parseFloat(state.totalTo) : undefined
+        };
 
         // @todo: #4.5 — отфильтровать данные используя компаратор
-        return data.filter(row => compare(row, state));
+        return data.filter(row => compare(row, filterState));
     }
 }
