@@ -1,1 +1,23 @@
 # sp6-2_smart-table_starter
+
+
+0. render() главная функция аппки main.js, которая отрисовывает всю страницу с помощью вызова метода sampleTable.render(result)
+0.1.    где sampleTable это переменная со значением результата выполнения initTable() пункта 1.
+0.2.    result результат отфильтрованных данных из dataset с помощью pagination
+
+1. initTable() возвращает return {...root, render} 
+1.1.    где root полная таблица по шаблону template id="table"
+с содержимым внутри по шаблонам id="row" id="pagination"
+1.2.    где render - фактическая отрисовка всех строк таблицы на странице template id="row"
+
+2. фильтруем result из пункта 0. sampleTable.render(result) с помощью applyPagination
+2.1.    где applyPagination переменная с рузультатом выполнения initPagination
+2.2.    initPagination принимает в себя аргументы:
+        а. клонированный шаблон пагинации sampleTable.pagination.elements по шаблону template id="pagination"
+        б. КОЛБЭК для отрисовки каждой кнопки страницы 
+2.3     initPagination возвращает функцию с параметрами (data, state, action)
+    a. data это датасет из условия проекта
+    б. state это объект с текущими значениями всех полей формы таблицы (select, input, radio) из div class="pagination-settings"
+    в. action это ТРЕТИЙ обработчик ловит нажатие на кнопку submit(prev, next, first, last) на всей таблице (root.container),
+       и с помощью onAction(e.submitter) в теле вызывает функцию render пункт 0. и передаёт эту кнопку как аргумент action
+       ПОДРОБНЕЕ В table.js

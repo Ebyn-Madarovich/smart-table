@@ -89,14 +89,20 @@ export const makeIndex = (arr, field, val) => arr.reduce((acc, cur) => ({
  * 2. Количество отображаемых страниц не превышает указанный лимит
  * 3. Диапазон корректируется у краев (начало и конец списка страниц)
  */
-export function getPages(currentPage, maxPage, limit) {
+export function getPages(currentPage, maxPage, limit) {  // текущая страница, всего страниц, максимум страниц для отрисовки
     // Проверяем, что входные данные являются корректными числами
     currentPage = Math.max(1, Math.min(maxPage, currentPage));  // currentPage должен быть от 1 до maxPage
     limit = Math.min(maxPage, limit);  // limit не должен превышать maxPage
 
+
     // Вычисляем диапазон страниц для отображения
     let start = Math.max(1, currentPage - Math.floor(limit / 2));  // Начинаем с currentPage минус половина лимита
+    // номер первой кнопки на панели видимых страниц
+    
+
     let end = start + limit - 1;  // Заканчиваем через limit страниц после start
+    // номер последней кнопки на панели видимых страниц
+
 
     // Корректируем, если мы близко к концу
     if (end > maxPage) {
