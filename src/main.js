@@ -75,7 +75,6 @@ const applyPagination = initPagination(
     // elements это все элементы firstPage, fromRow, lastPage, nextPage, pages, previousPage, rowsPerPage, toRow, totalRows по атрибуту data-name в div class="pagination-container" 
     sampleTable.pagination.elements,    // root['pagination'] = cloneTemplate('pagination') передаём сюда элементы пагинации, найденные в шаблоне
 
-
     (el, page, isCurrent) => {                    // и колбэк, чтобы заполнять кнопки страниц данными
         const input = el.querySelector('input');
             // console.log("mains.js initPagination колбэк input", input)
@@ -108,7 +107,7 @@ console.log("mains.js sampleTable.filter.elements:", sampleTable.filter.elements
 console.log("mains.js {searchBySeller: indexes.sellers}:", {searchBySeller: indexes.sellers})
 
 
-const applySearching =  initSearching(sampleTable.search.elements, "searchField")
+const applySearching = initSearching("search")
 console.log("mains.js sampleTable.search.elements:", sampleTable.search.elements)
 
 
