@@ -29,6 +29,13 @@ export function initFiltering(elements, indexes) {
         };
 
         // @todo: #4.5 — отфильтровать данные используя компаратор
-        return data.filter(row => compare(row, filterState));
+        // return data.filter(row => compare(row, filterState));
+        return data.filter(row => {
+            if (filterState.searchBySeller && row.seller !== filterState.searchBySeller) return false;
+            if (filterState.searchByCustomer && row.customer !== filterState.searchByCustomer) return false;
+            if (filterState.dateFrom && new Date(row.date) < new Date(filterState.dateFrom)) return false;
+            if (filterState.dateTo && new Date(row.date) > new Date(filterState.dateTo)) return false;
+            return compare(row, filterState); // проверка totalFrom/totalTo
+        });
     }
 }
