@@ -11,7 +11,7 @@ export function initFiltering(elements, indexes) {
         elements[elementName].append(                    // в каждый элемент добавляем опции
             ...Object.values(indexes[elementName])        // формируем массив имён, значений опций
                     .map(name => {                        // используйте name как значение и текстовое содержимое
-                                                        // @todo: создать и вернуть тег опции
+                    // @todo: создать и вернуть тег опции
                     const option = document.createElement('option');
                     option.value = name;
                     option.textContent = name;
@@ -22,7 +22,10 @@ export function initFiltering(elements, indexes) {
 
     return (data, state, action) => {
         // @todo: #4.2 — обработать очистку поля
+
         state.total = [state.totalFrom, state.totalTo];
+        console.log("filtering.js state:", state)
+        
         // @todo: #4.5 — отфильтровать данные используя компаратор
         return data.filter(row => compare(row, state));
     }
